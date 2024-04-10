@@ -715,14 +715,23 @@ v2ray with bestip
 ${vlessSec}
 ---------------------------------------------------------------`;
 	}).join('\n');
-${output}
-	
+
 	const sublink = `https://${hostName}/sub/${userIDArray[0]}?format=clash`;
 	const subbestip = `https://${hostName}/bestip/${userIDArray[0]}`;
 	const clash_link = `https://api.v1.mk/sub?target=clash&url=${encodeURIComponent(sublink)}&insert=false&emoji=true&list=false&tfo=false&scv=true&fdn=false&sort=false&new_name=true`;
-        <a href='${sublink}' target='_blank'>Vless节点订阅连接</a>
-	<a href='${subbestip}' target='_blank'>优选IP自动节点订阅</a>
-	<a href='${clash_link}' target='_blank'>Clash节点订阅连接</a>
+        const header = `
+	 <p align='center'>      
+	 <a href='${sublink}' target='_blank'>Vless节点订阅连接</a>
+	 <a href='${subbestip}' target='_blank'>优选IP自动节点订阅</a>
+	 <a href='${clash_link}' target='_blank'>Clash节点订阅连接</a></p>`;
+ return `
+ <html> 
+  <body>
+  <pre style='background-color: transparent; border: none;'>${header}</pre>
+  <pre>${output}</pre>
+  </body> 
+ </html>`;
+
       
 }
 
