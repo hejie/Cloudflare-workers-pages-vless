@@ -694,7 +694,7 @@ async function handleUDPOutBound(webSocket, vlessResponseHeader, log) {
  * @param {string} userID - single or comma separated userIDs
  * @param {string | null} hostName
  * @returns {string}
- */
+
 function getVLESSConfig(userIDs, hostName) {
 	const commonUrlPart = `:443?encryption=none&security=tls&sni=${hostName}&fp=randomized&type=ws&host=${hostName}&path=%2F%3Fed%3D2048#${hostName}`;
 	const hashSeparator = "################################################################";
@@ -732,7 +732,37 @@ ${vlessSec}
   </body> 
  </html>`;
 
-      
+}
+ */
+function getVLESSConfig(userID, hostName) {
+    const vlessLink = `vless://${userID}@www.gov.se:80?encryption=none&security=none&fp=randomized&type=ws&host=${hostName}&path=%2F%3Fed%3D2048#Misaka-workers`
+    const vlessTlsLink = `vless://${userID}@www.gov.se:443?encryption=none&security=tls&sni=${hostName}&fp=randomized&type=ws&host=${hostName}&path=%2F%3Fed%3D2048#Misaka-workers-TLS`
+    return `
+下面是非 TLS 端口的节点信息及分享链接，可使用 CF 支持的非 TLS 端口：
+
+地址：${hostName} 或 CF 优选 IP
+端口：80 或 CF 支持的非 TLS 端口
+UUID：${userID}
+传输：ws
+伪装域名：${hostName}
+路径：/?ed=2048
+
+${vlessLink}
+
+下面是 TLS 端口的节点信息及分享链接，可使用 CF 支持的 TLS 端口：
+
+地址：${hostName} 或 CF 优选 IP
+端口：443 或 CF 支持的 TLS 端口
+UUID：${userID}
+传输：ws
+传输层安全：TLS
+伪装域名：${hostName}
+路径：/?ed=2048
+SNI 域名：${hostName}
+
+${vlessTlsLink}
+
+`;
 }
 
 const portSet_http = new Set([80, 8080, 8880, 2052, 2086, 2095, 2082]);
