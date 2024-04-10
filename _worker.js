@@ -707,16 +707,16 @@ function getVLESSConfig(userIDs, hostName) {
 		const vlessMain = `vless://${userID}@${hostName}${commonUrlPart}`;
 		const vlessSec = `vless://${userID}@${proxyIP}${commonUrlPart}`;
 		return `<h2>UUID: ${userID}</h2>${hashSeparator}\nv2ray default ip
----------------------------------------------------------------`;
+---------------------------------------------------------------
 ${vlessMain}
----------------------------------------------------------------`;
+---------------------------------------------------------------
 v2ray with bestip
----------------------------------------------------------------`;
+---------------------------------------------------------------
 ${vlessSec}
 ---------------------------------------------------------------`;
 	}).join('\n');
 ${output}
----------------------------------------------------------------`;
+---------------------------------------------------------------
 	const sublink = `https://${hostName}/sub/${userIDArray[0]}?format=clash`;
 	const subbestip = `https://${hostName}/bestip/${userIDArray[0]}`;
 	const clash_link = `https://api.v1.mk/sub?target=clash&url=${encodeURIComponent(sublink)}&insert=false&emoji=true&list=false&tfo=false&scv=true&fdn=false&sort=false&new_name=true`;
