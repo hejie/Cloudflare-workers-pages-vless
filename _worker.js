@@ -716,7 +716,7 @@ ${vlessSec}
 ---------------------------------------------------------------`;
 	}).join('\n');
 ${output}
----------------------------------------------------------------
+	
 	const sublink = `https://${hostName}/sub/${userIDArray[0]}?format=clash`;
 	const subbestip = `https://${hostName}/bestip/${userIDArray[0]}`;
 	const clash_link = `https://api.v1.mk/sub?target=clash&url=${encodeURIComponent(sublink)}&insert=false&emoji=true&list=false&tfo=false&scv=true&fdn=false&sort=false&new_name=true`;
